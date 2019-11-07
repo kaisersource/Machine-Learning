@@ -21,12 +21,11 @@ w0test = 0.1
 # training data with noise (e.g., measurement errors)
 #sigma = 0.2
 
-
+ones = np.ones(len(x[0]))
 def perceptron_train(x, w, y):
    # w = np.zeros(len(X[0]))
     eta = 0.1
     epochs = 100
-
     mse=0
     print(x[0])
     print(len(x[0]))
@@ -38,7 +37,7 @@ def perceptron_train(x, w, y):
             wT = w[1:].transpose()
             upd = np.multiply(eta *(y[i] - np.dot(wT, x[i, :])), x[i, :])
             w[1:] = np.add(w[1:], upd)
-            w[0] += eta*(y[i] - (np.dot(wT,x[i])+w[0]))
+            w[0] += eta*(y[i] - (np.dot(wT,ones)+w[0]))
             ans = (np.dot(x, w[1:]) + w[0])
                 #print("weights updated", w)
             mse = np.sqrt(np.dot(np.subtract(ans,y),np.subtract(ans,y)))
