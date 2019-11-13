@@ -15,13 +15,12 @@ file = open("output.csv", "w+")
 y = dataset.iloc[:, -1:].values
 
 ynp = np.asarray(y)
+w0test = 0
 
 def perceptron_train(x, w, y):
    # w = np.zeros(len(X[0]))
     eta = 0.0003
     epochs = 1000
-    print(x[0])
-    print(len(x[0]))
 
 
     for t in range(epochs):
@@ -30,7 +29,6 @@ def perceptron_train(x, w, y):
         for i in range(len(x)):
             w[1:]+= eta*(y[i] - ans[i])*x[i]
             w[0] += eta*(y[i] - ans[i])
-    print("this is w0:",w[0])
     return w
 
 w = 2*np.random.rand(len(x[0])+1)
